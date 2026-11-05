@@ -1,4 +1,14 @@
-const API_BASE = '/api';
+const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+const API_BASE = (configuredApiBaseUrl || '/api').replace(/\/+$/, '');
+const API_ORIGIN = /^https?:\/\//i.test(API_BASE) ? new URL(API_BASE).origin : '';
+
+export function getMediaUrl(path) {
+  if (!path || !API_ORIGIN || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(path)) {
+    return path;
+  }
+
+  return new URL(path, API_ORIGIN).toString();
+}
 
 function getAuthHeader() {
   const token = localStorage.getItem('ewaste_token');
