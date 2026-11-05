@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://smart-e-waste-management-system.onrender.com/api/:path*"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "https://smart-e-waste-management-system.onrender.com/uploads/:path*"
+    }
+  ]
+}

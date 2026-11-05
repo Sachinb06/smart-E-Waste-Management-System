@@ -88,13 +88,7 @@ Open `http://localhost:5173` in your web browser.
 
 ### Deploying the Frontend and Backend Separately
 
-The Vite development proxy only works locally. For a deployed frontend, first deploy `backend` to a host that runs FastAPI and note its public URL. Then, in the frontend hosting project's settings (for example, Vercel → **Settings → Environment Variables**), set:
-
-```text
-VITE_API_BASE_URL=https://your-backend.example.com/api
-```
-
-Replace the example URL with your backend's public URL, including `/api`, then redeploy the frontend. The backend must allow requests from the deployed frontend's origin. Locally, if this variable is unset, the frontend continues to use the Vite proxy.
+The frontend's `vercel.json` forwards `/api/*` and `/uploads/*` through Vercel to the deployed Render backend. In Vercel, set the project's **Root Directory** to `frontend` and redeploy; no API URL environment variable is needed. The frontend and backend must both be deployed for API features to work. Locally, Vite continues to proxy API and uploaded-image requests to `http://127.0.0.1:8000`.
 
 ## 5. Running Automated Backend & E2E Tests
 

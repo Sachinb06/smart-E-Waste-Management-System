@@ -11,7 +11,7 @@ import {
   Sparkles,
   ExternalLink
 } from 'lucide-react';
-import { api, getMediaUrl } from '../services/api';
+import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
 export default function UserDashboardPage({ setActivePage, setSelectedTrackingCode }) {
@@ -195,7 +195,7 @@ export default function UserDashboardPage({ setActivePage, setSelectedTrackingCo
               <div key={det.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
                 <div className="aspect-video rounded-xl bg-slate-900 overflow-hidden relative">
                   <img
-                    src={getMediaUrl(det.image_path)}
+                    src={det.image_path}
                     alt={det.detected_object}
                     className="w-full h-full object-cover"
                     onError={(e) => {
